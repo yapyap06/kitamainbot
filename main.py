@@ -191,11 +191,12 @@ def build_wa_hyperlink_formula(phone_raw: str, message_text: str, label: str = "
 def get_spreadsheet():
     """Connects to Google Sheets and ensures all 3 worksheets exist with headers."""
     global APPROVED_ACTIVE_COUNT, WAITLIST_COUNTER
-    if not GSPREAD_AVAILABLE or not os.path.exists("credentials.json"):
-        print("[Sheets Warning] credentials.json not found or gspread not installed.")
+    creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", "credentials.json")
+    if not GSPREAD_AVAILABLE or not os.path.exists(creds_path):
+        print(f"[Sheets Warning] Credentials file not found ({creds_path}) or gspread not installed.")
         return None
     try:
-        gc = gspread.service_account(filename="credentials.json")
+        gc = gspread.service_account(filename=creds_path)
         sh = gc.open(GOOGLE_SHEET_NAME)
         existing_titles = [w.title for w in sh.worksheets()]
 
