@@ -1,5 +1,6 @@
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
+python-multipart>=0.0.18
 twilio==9.4.3
 gspread==6.1.4
 google-auth==2.38.0
