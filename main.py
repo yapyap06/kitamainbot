@@ -64,6 +64,14 @@ except ImportError:
 
 app = FastAPI(title="Kita Main (YGG) WhatsApp Intake & 3-Sheet Live Engine")
 
+@app.get("/")
+def home():
+    return {"status": "online", "message": "Kita Main WhatsApp Bot is live!"}
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 # =====================================================================
 # 1. TWILIO & GOOGLE SHEETS CREDENTIALS (from environment variables)
 # =====================================================================
