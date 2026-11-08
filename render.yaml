@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: kitamain-whatsapp-bot
+    runtime: docker
+    plan: free
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        value: "whatsapp:+14155238886"
+      - key: GOOGLE_SHEET_NAME
+        value: "KitaMain_Master_DB"
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false
+
